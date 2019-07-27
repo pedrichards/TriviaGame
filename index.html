@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+  </head>
+
+  <body>
+    
+    <container>
+        //Headline with name of game
+
+        //start button that disappears on click after game initializes
+        <div id="buttons">
+            <button id="start">Start</button>
+        </div>
+        //Div where "time remaning" and time remaining appears
+        
+        //Div where questions will appear
+        <div id="question"></div>
+        //Div for answers that each change formatting after mouse hover
+        <div id="buttons">        
+        // 4 separate divs for answer 1 to 4 that will be linked to as buttons in jquery
+            <button id="answer1"></button>
+            <button id="answer2"></button>
+            <button id="answer3"></button>
+            <button id="answer4"></button>
+      </div>
+        //div for correct or incorrect and identification of what was the correct answer
+        <div id="correctincorrect"></div>
+
+        //div that replaces questions and answers and correct response and concludes game
+        //notes number of correct, incorrect, and unanswered questions and
+        //features clickable div to start over
+        <div id="endGame">
+                <div id="wins-text">
+                    </div>                
+                    <div id="losses-text">                  
+                    </div>                  
+                    <div id="unanswered-text">                  
+                    </div>
+            <button id="reStart"></button>
+        </div>
+
+
+    
+    
+    
+    </container>
+
+
+
+ <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ <!-- Script -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+      </body>
+
+  </html>
