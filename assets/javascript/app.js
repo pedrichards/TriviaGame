@@ -52,23 +52,28 @@ $(document).ready(function() {
       function questionAsking() {       
         //start timer countdown
         // clearInterval(intervalId);
-        // intervalId = setInterval(decrement, 1000);
-        // clockRunning = true;
-        // questionTime = 25;
-        // //$("#time") = questionTime;
-        // // timeText.textContent = questionTime;
-        //     function decrement() {
-        //       //  Decrease number by one.
-        //       questionTime--;
-        //       //  Show the number in the #time tag.
-        //       $("#time").text("Time remaining to guess: " + questionTime);
-        //       //  Once number hits zero...
-        //       if (questionTime === 0) {
-        //       //   //  ...run the stop function.
-        //       clockRunning = false;
-        //       clearInterval(intervalId);
-        //        }
-        //     }
+        intervalId = setInterval(decrement, 1000);
+        clockRunning = true;
+        questionTime = 5;
+        //$("#time") = questionTime;
+        // timeText.textContent = questionTime;
+            function decrement() {
+              //  Decrease number by one.
+              questionTime--;
+              //  Show the number in the #time tag.
+              $("#time").text("Time remaining to guess: " + questionTime);
+              //  Once number hits zero...
+              if (questionTime === 0) {
+                clearInterval(intervalId);
+                $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
+                // clearInterval(intervalId);
+                interimTimer();
+                questionNumber += 1; 
+              //   //  ...run the stop function.
+              clockRunning = false;
+              
+               }
+            }
         console.log(questionNumber)
                     //display round i+1 of question and answers
                     $("#question").text(questions[questionNumber]);
@@ -77,7 +82,7 @@ $(document).ready(function() {
                     $("#answer3").text(options[questionNumber][2]);
                     $("#answer4").text(options[questionNumber][3]);
                   //As long as the clock is ticking any answer clicked will call this function
-                  if (!clockRunning) {
+                  if (clockRunning = true) {
                     //add hover function to highlight answers mouse
 
                     $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
@@ -85,7 +90,7 @@ $(document).ready(function() {
                         //Respond if Answer Correct
                         if ($(this).html() === answers[questionNumber]) {
                             $(this).addClass("correct");
-                            $("#results").text("<p>You correctly selected: " + answers[questionNumber] + "</p>");
+                            $("#results").text("You correctly selected: " + answers[questionNumber]);
                             correct += 1;
                             interimTimer();
                             questionNumber += 1;   
@@ -93,7 +98,7 @@ $(document).ready(function() {
                         //Respond if answer is missed
                         else {
                           $(this).addClass("incorrect");
-                          $("#results").html("<p>Wrong! The correct answer is: " + answers[questionNumber] + "</p>");
+                          $("#results").html("Wrong! The correct answer is: " + answers[questionNumber]);
                           incorrect += 1;
                           interimTimer();
                           questionNumber += 1; 
@@ -101,12 +106,12 @@ $(document).ready(function() {
                     });
                   }
                   //If timer is not running, run code for unanswered question
-                  else {
-                    $("#results").html("<p>Time's up! The correct answer is: " + answers[questionNumber] + "</p>");
-                    clearInterval(intervalId);
-                    interimTimer();
-                    questionNumber += 1; 
-                  }
+                  // else {
+                  //   $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
+                  //   clearInterval(intervalId);
+                  //   interimTimer();
+                  //   questionNumber += 1; 
+                  // }
       
           function InterimTimer (){
 
