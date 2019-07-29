@@ -49,7 +49,7 @@ $(document).ready(function() {
     $("#start").hide();
 
     // for (i = 0; i < questions.length; i++) { 
-      function questions() {       
+      function questionAsking() {       
         //start timer countdown
         // clearInterval(intervalId);
         // intervalId = setInterval(decrement, 1000);
@@ -77,15 +77,15 @@ $(document).ready(function() {
                     $("#answer3").text(options[questionNumber][2]);
                     $("#answer4").text(options[questionNumber][3]);
                   //As long as the clock is ticking any answer clicked will call this function
-                  if (clockRunning) {
+                  if (!clockRunning) {
                     //add hover function to highlight answers mouse
 
                     $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
                         unattempted -= 1;
                         //Respond if Answer Correct
-                        if ($(this).val === answers[i]) {
+                        if ($(this).html() === answers[questionNumber]) {
                             $(this).addClass("correct");
-                            $("#results").html("<p>You correctly selected: " + answers[i] + "</p>");
+                            $("#results").text("<p>You correctly selected: " + answers[questionNumber] + "</p>");
                             correct += 1;
                             interimTimer();
                             questionNumber += 1;   
@@ -93,7 +93,7 @@ $(document).ready(function() {
                         //Respond if answer is missed
                         else {
                           $(this).addClass("incorrect");
-                          $("#results").html("<p>Wrong! The correct answer is: " + answers[i] + "</p>");
+                          $("#results").html("<p>Wrong! The correct answer is: " + answers[questionNumber] + "</p>");
                           incorrect += 1;
                           interimTimer();
                           questionNumber += 1; 
@@ -102,7 +102,7 @@ $(document).ready(function() {
                   }
                   //If timer is not running, run code for unanswered question
                   else {
-                    $("#results").html("<p>Time's up! The correct answer is: " + answers[i] + "</p>");
+                    $("#results").html("<p>Time's up! The correct answer is: " + answers[questionNumber] + "</p>");
                     clearInterval(intervalId);
                     interimTimer();
                     questionNumber += 1; 
@@ -111,8 +111,8 @@ $(document).ready(function() {
           function InterimTimer (){
 
           };
-          }
-        questions();
+          };
+        questionAsking();
 
         // }
         
