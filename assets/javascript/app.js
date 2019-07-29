@@ -4,12 +4,13 @@
 
 $(document).ready(function() {
 
-
   var correct = 0;
   var incorrect = 0;
   var unattempted = 6;
 
   var questionTime;
+
+  var questionNumber = 0;
 
   var clockRunning = false;
 
@@ -42,38 +43,39 @@ $(document).ready(function() {
     'mako shark',
     'oceanic whitetip shark'
   ]
-  $("#start").on('click', function(){
+  $("#start, reStart").on('click', function(){
     
     //hide start button
     $("#start").hide();
 
-    for (i = 0; i < questions.length; i++) { 
-      function questions() {
-        
+    // for (i = 0; i < questions.length; i++) { 
+      function questions() {       
         //start timer countdown
-        clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
-        clockRunning = true;
-        questionTime = 25;
-        //$("#time") = questionTime;
-        // timeText.textContent = questionTime;
-            function decrement() {
-              //  Decrease number by one.
-              questionTime--;
-              //  Show the number in the #time tag.
-              $("#time").text("Time remaining to guess: " + questionTime);
-              //  Once number hits zero...
-              if (questionTime === 0) {
-              //   //  ...run the stop function.
-              clockRunning = false;
-               }
-            }
+        // clearInterval(intervalId);
+        // intervalId = setInterval(decrement, 1000);
+        // clockRunning = true;
+        // questionTime = 25;
+        // //$("#time") = questionTime;
+        // // timeText.textContent = questionTime;
+        //     function decrement() {
+        //       //  Decrease number by one.
+        //       questionTime--;
+        //       //  Show the number in the #time tag.
+        //       $("#time").text("Time remaining to guess: " + questionTime);
+        //       //  Once number hits zero...
+        //       if (questionTime === 0) {
+        //       //   //  ...run the stop function.
+        //       clockRunning = false;
+        //       clearInterval(intervalId);
+        //        }
+        //     }
+        console.log(questionNumber)
                     //display round i+1 of question and answers
-                    $("#question") = questions[i]
-                    $("#answer1") = options[i][0]
-                    $("#answer2") = options[i][1]
-                    $("#answer3") = options[i][2]
-                    $("#answer4") = options[i][3]
+                    $("#question").text(questions[questionNumber]);
+                    $("#answer1").text(options[questionNumber][0]);
+                    $("#answer2").text(options[questionNumber][1]);
+                    $("#answer3").text(options[questionNumber][2]);
+                    $("#answer4").text(options[questionNumber][3]);
                   //As long as the clock is ticking any answer clicked will call this function
                   if (clockRunning) {
                     //add hover function to highlight answers mouse
@@ -85,7 +87,8 @@ $(document).ready(function() {
                             $(this).addClass("correct");
                             $("#results").html("<p>You correctly selected: " + answers[i] + "</p>");
                             correct += 1;
-                            interimTimer();   
+                            interimTimer();
+                            questionNumber += 1;   
                         }
                         //Respond if answer is missed
                         else {
@@ -93,6 +96,7 @@ $(document).ready(function() {
                           $("#results").html("<p>Wrong! The correct answer is: " + answers[i] + "</p>");
                           incorrect += 1;
                           interimTimer();
+                          questionNumber += 1; 
                         }
                     });
                   }
@@ -101,15 +105,16 @@ $(document).ready(function() {
                     $("#results").html("<p>Time's up! The correct answer is: " + answers[i] + "</p>");
                     clearInterval(intervalId);
                     interimTimer();
+                    questionNumber += 1; 
                   }
       
-          function InterimTimer (
+          function InterimTimer (){
 
-          ){};
+          };
           }
         questions();
 
-        }
+        // }
         
         
         function showFinalResults(){
