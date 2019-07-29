@@ -49,26 +49,32 @@ $(document).ready(function() {
     $("#start").hide();
 
     // for (i = 0; i < questions.length; i++) { 
-      function questionAsking() {       
+      function questionAsking() {
+        //  Show the number in the #time tag.
+        $("#time").text("Time remaining to guess: " + questionTime);    
         //start timer countdown
         // clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
         clockRunning = true;
         questionTime = 5;
         //$("#time") = questionTime;
+        //  Show the number in the #time tag.
+              $("#time").text("Time remaining to guess: " + questionTime);
         // timeText.textContent = questionTime;
             function decrement() {
+              
               //  Decrease number by one.
               questionTime--;
               //  Show the number in the #time tag.
               $("#time").text("Time remaining to guess: " + questionTime);
               //  Once number hits zero...
               if (questionTime === 0) {
+                $("#time").text("Time remaining to guess: " + questionTime);
                 clearInterval(intervalId);
                 $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
                 // clearInterval(intervalId);
+                questionNumber += 1;
                 interimTimer();
-                questionNumber += 1; 
               //   //  ...run the stop function.
               clockRunning = false;
               
@@ -113,8 +119,29 @@ $(document).ready(function() {
                   //   questionNumber += 1; 
                   // }
       
-          function InterimTimer (){
-
+          function interimTimer (){
+            intervalId = setInterval(decrement2, 1000);
+            clock2Running = true;
+            interimTime = 5;
+            //$("#time") = questionTime;
+            // timeText.textContent = questionTime;
+                function decrement2() {
+                  //  Decrease number by one.
+                  interimTime--;
+                  //  Show the number in the #time tag
+                  //  Once number hits zero...
+                  if (interimTime === 0) {
+                    clearInterval(intervalId);
+                    // clearInterval(intervalId);
+                    questionAsking();
+                    console.log("interim" + interimTime)
+                  //   //  ...run the stop function.
+                  clock2Running = false;
+                  $("#results").hide();
+                  
+                   }
+                }
+            
           };
           };
         questionAsking();
