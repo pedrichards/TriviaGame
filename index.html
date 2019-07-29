@@ -7,35 +7,41 @@
     <meta charset="UTF-8">
     <title>Document</title>
 
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Added a link to our external stylesheet-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
   </head>
 
   <body>
     
     <container>
-        //Headline with name of game
+        <!-- //Headline with name of game -->
 
-        //start button that disappears on click after game initializes
+        <!-- //start button that disappears on click after game initializes -->
         <div id="buttons">
-            <button id="start">Start</button>
+            <div id="start">Start</div>
         </div>
-        //Div where "time remaning" and time remaining appears
-        
-        //Div where questions will appear
+        <!-- //Div where "time remaning" and time remaining appears -->
+        <div id="time"></div>
+        <!-- //Div where questions will appear -->
         <div id="question"></div>
-        //Div for answers that each change formatting after mouse hover
+        <!-- //Div for answers that each change formatting after mouse hover -->
         <div id="buttons">        
-        // 4 separate divs for answer 1 to 4 that will be linked to as buttons in jquery
-            <button id="answer1"></button>
-            <button id="answer2"></button>
-            <button id="answer3"></button>
-            <button id="answer4"></button>
+        <!-- // 4 separate divs for answer 1 to 4 that will be linked to as buttons in jquery -->
+            <div id="answer1"></div>
+            <div id="answer2"></div>
+            <div id="answer3"></div>
+            <div id="answer4"></div>
       </div>
-        //div for correct or incorrect and identification of what was the correct answer
-        <div id="correctincorrect"></div>
+        <!-- //div for correct or incorrect and identification of what was the correct answer -->
+        <div id="results"></div>
 
-        //div that replaces questions and answers and correct response and concludes game
+        <!-- //div that replaces questions and answers and correct response and concludes game
         //notes number of correct, incorrect, and unanswered questions and
-        //features clickable div to start over
+        //features clickable div to start over -->
         <div id="endGame">
                 <div id="wins-text">
                     </div>                
@@ -43,7 +49,7 @@
                     </div>                  
                     <div id="unanswered-text">                  
                     </div>
-            <button id="reStart"></button>
+            <div id="reStart"></div>
         </div>
 
 

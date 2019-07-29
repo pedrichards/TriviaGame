@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan&display=swap');
+
+#start {
+    font-family: 'Baloo Chettan', cursive;
+}
+
+#buttons {
+    width: 50%;
+    height: 100px;
+}
