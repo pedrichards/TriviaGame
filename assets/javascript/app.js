@@ -42,7 +42,7 @@ $(document).ready(function() {
     'mako shark',
     'oceanic whitetip shark'
   ]
-  $("#start, #reStart").on('click', function(){
+  $("#start").on('click', function(){
     
     //hide start button
     $("#start").hide();
@@ -76,7 +76,7 @@ $(document).ready(function() {
                     $("#answer4") = options[i][3]
                   //As long as the clock is ticking any answer clicked will call this function
                   if (clockRunning) {
-                    //add hover function to highlight answers mouse hovers over
+                    //add hover function to highlight answers mouse
 
                     $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
                         unattempted -= 1;
@@ -105,7 +105,7 @@ $(document).ready(function() {
       
           function InterimTimer (
 
-          );
+          ){};
           }
         questions();
 
