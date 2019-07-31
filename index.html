@@ -29,7 +29,7 @@
         <!-- //Div where questions will appear -->
         <div id="question" class="d-flex justify-content-center"></div>
         <!-- //Div for answers that each change formatting after mouse hover -->
-        <div id="buttons" class="answerButtons">        
+        <div class="answerButtons">        
         <!-- // 4 separate divs for answer 1 to 4 that will be linked to as buttons in jquery -->
             <div id="answer1" class="d-flex justify-content-center"></div>
             <div id="answer2" class="d-flex justify-content-center"></div>
@@ -45,11 +45,13 @@
         <div id="endGame">
                 <div id="wins-text" class="d-flex justify-content-center">
                     </div>                
-                    <div id="losses-text" class="d-flex justify-content-center">                  
+                <div id="losses-text" class="d-flex justify-content-center">                  
                     </div>                  
-                    <div id="unanswered-text" class="d-flex justify-content-center">                  
+                <div id="unanswered-text" class="d-flex justify-content-center">                  
                     </div>
-            <div id="reset" class="d-flex justify-content-center">Restart</div>
+                <div id="buttons">
+                  <div id="reset" class="d-flex justify-content-center">Restart</div>
+                </div>
         </div>
       </container>
 

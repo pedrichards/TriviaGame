@@ -38,6 +38,12 @@ $(document).ready(function() {
   
   $("#reset").empty();
 
+  $("#buttons, #answer1, #answer2, #answer3, #answer4, #reset").hover(function(){
+    $(this).css("background-color", "yellow");
+  }, function(){
+      $(this).css("background-color", "transparent");
+  });
+
   $("#start, #reset").on('click', function(){
     
     //hide start button
@@ -55,7 +61,7 @@ $(document).ready(function() {
         // clearInterval(intervalId);
         intervalId = setInterval(decrement, 1000);
         clockRunning = true;
-        questionTime = 5;
+        questionTime = 25;
         //$("#time") = questionTime;
         //  Show the number in the #time tag.
               $("#time").text("Time remaining to guess: " + questionTime);
