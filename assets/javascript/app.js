@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   var questionTime;
 
-  var questionNumber = 0;
+  var questionNumber;
 
   var clockRunning = false;
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
     'What is the title of Rem Koolhaas\' 1978 treatise, a \'retroactive manifesto\' on \'the culture of congestion\'?',
     'Zaha Hadid received her architectural education where?',
     'Peter Zumthor, famous for the Therme Vals resort in Switzerland, is responsible for a museum in which U.S. metropolis?',
-    'The __________ pavilion, is a temporary structure commissioned each year outside the __________ galery in London, U.K.?',
+    'The __________ pavilion, is a temporary structure commissioned each year outside the __________ gallery in London, U.K.?',
     "Federal Center in Chicago, IL was designed by which famous 20th Century Modernist Architect",
     'This architect has failed to be awarded the Pritzker prize in architecture as of 2019?'
   ]
@@ -23,7 +23,7 @@ $(document).ready(function() {
     ['\"Towards a New Architecture\"', '\"Delirious New York\"', '\"Mask of Medusa\"', '\"Collage City\"'],
     ['Harvard\'s G.S.D.', 'Politecnico di Milano', 'Oxford School of Architecture', 'Architectural Association'],
     ['New York City', 'Chicago', 'Los Angeles', 'Houston'],
-    ['Temp', 'Avian', 'Cantilever', 'Serpentine'],
+    ['Albion', 'Avian', 'Cantilever', 'Serpentine'],
     ['Mies van der Rohe', 'Walter Gropius', 'Le Corbusier', 'Eero Saarinen'],
     ['Ieoh Ming Pei', 'Tadao Ando', 'Jeanne Gang', 'Thomas Mayne']
   ]
@@ -44,6 +44,7 @@ $(document).ready(function() {
     $("#start").hide();
     $("#endGame").hide();
     $("#reset").hide();
+    questionNumber = 0;
 
     // for (i = 0; i < questions.length; i++) { 
       function questionAsking() {
@@ -85,6 +86,11 @@ $(document).ready(function() {
             }
         console.log(questionNumber)
                     //display round i+1 of question and answers
+                    // $("#question").show();
+                    // $("#answer1").show();
+                    // $("#answer2").show();
+                    // $("#answer3").show();
+                    // $("#answer4").show();
                     $("#question").text(questions[questionNumber]);
                     $("#answer1").text(options[questionNumber][0]);
                     $("#answer2").text(options[questionNumber][1]);
