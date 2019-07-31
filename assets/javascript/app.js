@@ -84,13 +84,7 @@ $(document).ready(function() {
                    clearInterval(intervalId);
                }
             }
-        console.log(questionNumber)
                     //display round i+1 of question and answers
-                    // $("#question").show();
-                    // $("#answer1").show();
-                    // $("#answer2").show();
-                    // $("#answer3").show();
-                    // $("#answer4").show();
                     $("#question").text(questions[questionNumber]);
                     $("#answer1").text(options[questionNumber][0]);
                     $("#answer2").text(options[questionNumber][1]);
@@ -103,9 +97,7 @@ $(document).ready(function() {
                     $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
                       if (clockRunning) {  
                         $("#results").show();
-                        console.log("okay");
                         unattempted--;
-                        console.log("unattempted:" + unattempted);
                         //Respond if Answer Correct
                         if ($(this).html() === answers[questionNumber]) {
                             $(this).addClass("correct");
@@ -143,24 +135,20 @@ $(document).ready(function() {
                   //  Once number hits zero...
                   if (interimTime === 0) {
                     clearInterval(intervalId);
-                    // clearInterval(intervalId);
-                    
-                    console.log("interim" + interimTime)
                   //   //  ...run the stop function.
-                  clock2Running = false;
-                  $("#results").empty();
-                  questionNumber++;
-                  
+                    clock2Running = false;
+                    $("#results").empty();
+                    questionNumber++;
+                  // If questionNumber greater than length of array-1 show final results, exit from function
                     if (questionNumber > 5) {
                       showFinalResults();
                       return false;
                     }
-                  questionAsking();
+                    questionAsking();
                    }
                 }
             
-          };
-          
+            };
           };
         questionAsking();
 

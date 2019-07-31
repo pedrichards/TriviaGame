@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan&display=swap');
 body {
     font-family: 'Baloo Chettan', cursive;
+        padding-right: 0px !important;
+        overflow-y: hidden !important;
+      
 }
 
 /* #buttons {
     width: 50%;
     height: 100px;
 } */
+
+.hero-text {
+    /* font-family: 'Noto Sans', sans-serif; */
+    line-height: 150%;
+    text-align: center;
+    position: absolute;
+    top: 15%;
+    /* left: 50%;
+    transform: translate(-50%, -50%); */
+    color: #002a3d;
+    font-size: 25px;
+  }
+
+  #gameName {
+      font-size: 40px;
+  }
