@@ -90,14 +90,17 @@ $(document).ready(function() {
                     //add hover function to highlight answers mouse
 
                     $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
-                      $("#results").show();
-                      console.log("okay");
+                      if (clockRunning) {  
+                        $("#results").show();
+                        console.log("okay");
                         unattempted--;
+                        console.log("unattempted:" + unattempted);
                         //Respond if Answer Correct
                         if ($(this).html() === answers[questionNumber]) {
                             $(this).addClass("correct");
                             $("#results").text("You correctly selected: " + answers[questionNumber]);
-                            correct += 1;
+                            correct++;
+                            console.log("correct:" + correct);
                             interimTimer();
                             // questionNumber += 1;
                             clockRunning = false; 
@@ -106,11 +109,13 @@ $(document).ready(function() {
                         else {
                           $(this).addClass("incorrect");
                           $("#results").html("Wrong! The correct answer is: " + answers[questionNumber]);
-                          incorrect += 1;
+                          incorrect++;
+                          console.log("incorrect" + incorrect);
                           interimTimer();
                           // questionNumber += 1;
                           clockRunning = false;
                         }
+                      }
                     });
                   }
           function interimTimer (){
