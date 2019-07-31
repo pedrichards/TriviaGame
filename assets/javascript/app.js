@@ -12,33 +12,38 @@ $(document).ready(function() {
 
 
   var questions = [
-    'What species of shark do people encounter most often at Shark Rodeos in the Bahamas?',
-    'Called the grey nurse shark in Australia, its common name in America is the _________.',
-    'The _____________ is one of the only species of sharks known to eat jellyfish.',
-    'Which two species of sharks have eyes that contain only rods and no cones?',
-    "Featured in Ernest Hemingway's novel \"The Old Man and the Sea\" was the ___________.",
-    'This species destroyed Peter Benchley\'s handy broomstick on a lanyard while he was SCUBA diving.'
+    'What is the title of Rem Koolhaas\' 1978 treatise, a \'retroactive manifesto\' on \'the culture of congestion\'?',
+    'Zaha Hadid received her architectural education where?',
+    'Peter Zumthor, famous for the Therme Vals resort in Switzerland, is responsible for a museum in which U.S. metropolis?',
+    'The __________ pavilion, is a temporary structure commissioned each year outside the __________ galery in London, U.K.?',
+    "Federal Center in Chicago, IL was designed by which famous 20th Century Modernist Architect",
+    'This architect has failed to be awarded the Pritzker prize in architecture as of 2019?'
   ]
   var options = [
-    ['grey reef shark', 'Caribbean reef shark', 'dusky shark', 'bull shark'],
-    ['Galapagos reef shark', 'whitetip reef shark', 'grey reef shark', 'sand tiger shark'],
-    ['sandbar shark', 'white-tip reef shark', 'bronze whaler shark', 'scalloped hammerhead shark'],
-    [' sand tiger shark& blacktip shark', 'mako shark & bronze whaler shark', 'great white shark & lemon shark', 'blacktip reef shark & sixgill shark'],
-    ['porbeagle shark', 'thresher shark', 'mako shark', 'great white shark'],
-    ['tiger shark', 'blue shark', 'oceanic whitetip shark', 'bull Shark']
+    ['\"Towards a New Architecture\"', '\"Delirious New York\"', '\"Mask of Medusa\"', '\"Collage City\"'],
+    ['Harvard\'s G.S.D.', 'Politecnico di Milano', 'Oxford School of Architecture', 'Architectural Association'],
+    ['New York City', 'Chicago', 'Los Angeles', 'Houston'],
+    ['Temp', 'Avian', 'Cantilever', 'Serpentine'],
+    ['Mies van der Rohe', 'Walter Gropius', 'Le Corbusier', 'Eero Saarinen'],
+    ['Ieoh Ming Pei', 'Tadao Ando', 'Jeanne Gang', 'Thomas Mayne']
   ]
   var answers = [
-    'Caribbean reef shark',
-    'sand tiger shark',
-    'bronze whaler shark',
-    'blacktip reef shark & sixgill shark',
-    'mako shark',
-    'oceanic whitetip shark'
+    '\"Delirious New York\"',
+    'Architectural Association',
+    'Los Angeles',
+    'Serpentine',
+    'Mies van der Rohe',
+    'Jeanne Gang'
   ]
-  $("#start, reStart").on('click', function(){
+  
+  $("#reset").empty();
+
+  $("#start, #reset").on('click', function(){
     
     //hide start button
     $("#start").hide();
+    $("#endGame").hide();
+    $("#reset").hide();
 
     // for (i = 0; i < questions.length; i++) { 
       function questionAsking() {
@@ -137,7 +142,7 @@ $(document).ready(function() {
                     console.log("interim" + interimTime)
                   //   //  ...run the stop function.
                   clock2Running = false;
-                  $("#results").hide();
+                  $("#results").empty();
                   questionNumber++;
                   
                     if (questionNumber > 5) {
@@ -157,17 +162,18 @@ $(document).ready(function() {
         
         
         function showFinalResults(){
-          $("#time").hide();
-          $("#question").hide();
-          $("#answer1").hide();
-          $("#answer2").hide();
-          $("#answer3").hide();
-          $("#answer4").hide();
+          $("#time").empty();
+          $("#question").empty();
+          $("#answer1").empty();
+          $("#answer2").empty();
+          $("#answer3").empty();
+          $("#answer4").empty();
           $("#endGame").show();
-          $("#wins-text").html("Number Correct" + correct);
-          $("#losses-text").html("Number Incorrect" + incorrect);              
-          $("#unanswered-text").html("Number Unanswered" + unattempted);             
+          $("#wins-text").html("Number Correct: " + correct);
+          $("#losses-text").html("Number Incorrect: " + incorrect);              
+          $("#unanswered-text").html("Number Unanswered: " + unattempted);             
           $("#reset").show();
+          $("#reset").html("Restart");
         };
 
   });
