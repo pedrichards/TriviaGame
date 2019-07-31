@@ -62,6 +62,7 @@ $(document).ready(function() {
               $("#time").text("Time remaining to guess: " + questionTime);
               //  Once number hits zero...
               if ((questionTime === 0) && (clockRunning)) {
+                $("#results").show();
                 $("#time").text("Time remaining to guess: " + questionTime);
                 clearInterval(intervalId);
                 // if ($("#results").html() != "") {
@@ -133,12 +134,12 @@ $(document).ready(function() {
                   clock2Running = false;
                   $("#results").hide();
                   questionNumber++;
-                  questionAsking();
-                    if (questionNumber > 6) {
-                      return false;
-                      showFinalResults();
-                    }
                   
+                    if (questionNumber > 5) {
+                      showFinalResults();
+                      return false;
+                    }
+                  questionAsking();
                    }
                 }
             
@@ -147,7 +148,7 @@ $(document).ready(function() {
           };
         questionAsking();
 
-        // }
+    
         
         
         function showFinalResults(){
