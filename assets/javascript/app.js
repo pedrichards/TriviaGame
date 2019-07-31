@@ -1,23 +1,16 @@
-// window.onload = function() {
-//     $("#start").on("click", q);
-//   };
-
 $(document).ready(function() {
 
   var correct = 0;
   var incorrect = 0;
   var unattempted = 6;
-
-  var questionTime;
+  var intervalId;
+  // var userGuess ="";
+  var questionTime = 5;
+  var interimTime = 5;
 
   var questionNumber = 0;
 
   var clockRunning = false;
-
-  // var questionText = document.getElementById('question');
-  // var resultsText = document.getElementById('results');
-  // var endGameText = document.getElementById('endGame');
-  // var timeText = document.getElementById("time");
 
   var questions = [
     'What species of shark do people encounter most often at Shark Rodeos in the Bahamas?',
@@ -43,145 +36,96 @@ $(document).ready(function() {
     'mako shark',
     'oceanic whitetip shark'
   ]
-  $("#start, reStart").on('click', function(){
-    
+  $("#reset").hide();
+  
+  $("#start, reset").on('click', function(){
     //hide start button
+    
     $("#start").hide();
-
-    // for (i = 0; i < questions.length; i++) { 
-      function questionAsking() {
-        //  Show the number in the #time tag.
-        $("#time").text("Time remaining to guess: " + questionTime);    
-        //start timer countdown
-        // clearInterval(intervalId);
-        intervalId = setInterval(decrement, 1000);
-        clockRunning = true;
-        questionTime = 5;
-        //$("#time") = questionTime;
-        //  Show the number in the #time tag.
-              $("#time").text("Time remaining to guess: " + questionTime);
-        // timeText.textContent = questionTime;
-            function decrement() {
-              
-              //  Decrease number by one.
-              questionTime--;
-              //  Show the number in the #time tag.
-              $("#time").text("Time remaining to guess: " + questionTime);
-              //  Once number hits zero...
-              if (questionTime === 0) {
-                $("#time").text("Time remaining to guess: " + questionTime);
-                clearInterval(intervalId);
-                $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
-                // clearInterval(intervalId);
-                questionNumber += 1;
-                interimTimer();
-              //   //  ...run the stop function.
-              clockRunning = false;
-              
-               }
-            }
-        console.log(questionNumber)
-                    //display round i+1 of question and answers
-                    $("#question").text(questions[questionNumber]);
-                    $("#answer1").text(options[questionNumber][0]);
-                    $("#answer2").text(options[questionNumber][1]);
-                    $("#answer3").text(options[questionNumber][2]);
-                    $("#answer4").text(options[questionNumber][3]);
-                  //As long as the clock is ticking any answer clicked will call this function
-                  if (clockRunning = true) {
-                    //add hover function to highlight answers mouse
-
-                    $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
-                        unattempted -= 1;
-                        //Respond if Answer Correct
-                        if ($(this).html() === answers[questionNumber]) {
-                            $(this).addClass("correct");
-                            $("#results").text("You correctly selected: " + answers[questionNumber]);
-                            correct += 1;
-                            interimTimer();
-                            questionNumber += 1;   
-                        }
-                        //Respond if answer is missed
-                        else {
-                          $(this).addClass("incorrect");
-                          $("#results").html("Wrong! The correct answer is: " + answers[questionNumber]);
-                          incorrect += 1;
-                          interimTimer();
-                          questionNumber += 1; 
-                        }
-                    });
-                  }
-                  //If timer is not running, run code for unanswered question
-                  // else {
-                  //   $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
-                  //   clearInterval(intervalId);
-                  //   interimTimer();
-                  //   questionNumber += 1; 
-                  // }
-      
-          function interimTimer (){
-            intervalId = setInterval(decrement2, 1000);
-            clock2Running = true;
-            interimTime = 5;
-            //$("#time") = questionTime;
-            // timeText.textContent = questionTime;
-                function decrement2() {
-                  //  Decrease number by one.
-                  interimTime--;
-                  //  Show the number in the #time tag
-                  //  Once number hits zero...
-                  if (interimTime === 0) {
-                    clearInterval(intervalId);
-                    // clearInterval(intervalId);
-                    questionAsking();
-                    console.log("interim" + interimTime)
-                  //   //  ...run the stop function.
-                  clock2Running = false;
-                  $("#results").hide();
-                  
-                   }
-                }
-            
-          };
-          };
-        questionAsking();
-
-        // }
-        
-        
-        function showFinalResults(){
-
-
-        };
+    $("#time").html("Time remaining to guess: " + questionTime);
+    runTimer();
+    questionAsking();
+    
+    
 
   });
+  function runTimer(){
     
+    if (!clockRunning) {
+    intervalId = setInterval(decrement, 1000); 
+    clockRunning = true;
+    }
+    function decrement() {
+    // $("#time").html("Time remaining to guess: " + questionTime);
+    questionTime --;
+    //stop timer if reach 0
+    if (questionTime === 0) {
+      unattempted--;
+      // clearInterval(intervalId);
+      // ??
+      // if ($("#results").length = 0 ) {
+      //   $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
+      // }
+      interimTimer();
+    }	
+  }
+  }
+  
+
+  function questionAsking() {
+    $("#question").text(questions[questionNumber]);
+    $("#answer1").text(options[questionNumber][0]);
+    $("#answer2").text(options[questionNumber][1]);
+    $("#answer3").text(options[questionNumber][2]);
+    $("#answer4").text(options[questionNumber][3]);
+    thisAnswer = answers[questionNumber];
+    questionNumber++;
+  }
+
+  $("#answer1, #answer2, #answer3, #answer4").on('click', function(){
+    if ((clockRunning) && (questionTime > 0)) {
+      unattempted -= 1;
+      //Respond if Answer Correct
+      if ($(this).html() === thisAnswer) {
+          $(this).addClass("correct");
+          $("#results").text("You correctly selected: " + thisAnswer);
+          correct += 1;
+          // questionNumber += 1;
+          //??  
+          clockRunning = false;
+          interimTimer();
+      }
+      //Respond if answer is missed
+      else {
+        $(this).addClass("incorrect");
+        $("#results").html("Wrong! The correct answer is: " + thisAnswer);
+        incorrect += 1;
+        // questionNumber += 1;
+        //??
+        clockRunning = false;
+        interimTimer(); 
+      }
+    }
+  });
+
+    function interimTimer (){
+      // clearInterval(intervalId);
+      intervalId = setInterval(decrement2, 1000);
+      clock2Running = true;
+      interimTime = 5;
+    }
+  
+    function decrement2() {
+    //  Decrease number by one.
+    interimTime--;
+    //  Once number hits zero...
+      if (interimTime === 0) {
+        clearInterval(intervalId);
+        //   //  ...run the stop function.
+        clock2Running = false;
+        questionAsking();
+        runTimer();
+        $("#results").hide();   
+      }
+  }
 });
-      // });
-
-
-      
-
-    // DONE: Use setInterval to start the count here and set the clock to running.
-    
-    
-    // if (!clockRunning) {
-    //   intervalId = setInterval(count, 1000);
-    //   clockRunning = true;
-    // }
-  
-  // function question2(){}
-
-  // function question3(){}
-
-  // function question4(){}
-
-
-  
-
-  // $("#start").on("click", question1);
-
-
-
- 
-
