@@ -4,7 +4,7 @@
 
 * [`index`](TriviaGame/index.html)[`app`](TriviaGame/assets/javascript/app.js)
 [`style`](TriviaGame/assets/css/style.css)
-[`delirious-new-york-a-retroactive-manifesto-for-manhattan-rem-koolhaas-first-edition-signed-1978`](TriviaGame/assets/css/delirious-new-york-a-retroactive-manifesto-for-manhattan-rem-koolhaas-first-edition-signed-1978.jpg)
+[`delirious-new-york-a-retroactive-manifesto-for-manhattan-rem-koolhaas-first-edition-signed-1978`](TriviaGame/assets/images/delirious-new-york-a-retroactive-manifesto-for-manhattan-rem-koolhaas-first-edition-signed-1978.jpg)
 
 ## Instructions
 
