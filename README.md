@@ -17,3 +17,5 @@
 *five second will elapse and the next question will appear, otherwise results will appear
 
 *Once the results have appeared you have the option of clicking on the restart button to begin anew
+
+### [Try the App!](https://pedrichards.github.io/TriviaGame/)

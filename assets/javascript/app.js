@@ -10,6 +10,8 @@ $(document).ready(function() {
 
   var clockRunning = false;
 
+  var questionImage;
+
 
   var questions = [
     'What is the title of Rem Koolhaas\' 1978 treatise, a \'retroactive manifesto\' on \'the culture of congestion\'?',
@@ -35,6 +37,14 @@ $(document).ready(function() {
     'Mies van der Rohe',
     'Jeanne Gang'
   ]
+  var images =  [
+    'https://media.giphy.com/media/KVDz0UQvqfDaxAxJxU/giphy.gif',
+    'https://media.giphy.com/media/2PXO2E8btxZDO/giphy.gif',
+    'https://media.giphy.com/media/UIEIbc26WovZu/giphy.gif',
+    'https://media.giphy.com/media/QvMiUfWmy2AlbQOVt6/giphy.gif',
+    'http://giphygifs.s3.amazonaws.com/media/gobORbkHNhD7a/giphy.gif',
+    'https://images.adsttc.com/media/images/581b/0844/e58e/ce7a/4b00/0339/slideshow/Aqua_Tower_Image_2_-_Steve_Hall_(c)_Hedrich_Blessing.jpg?1478166579'
+  ]
   
   $("#reset").empty();
 
@@ -51,6 +61,8 @@ $(document).ready(function() {
     $("#endGame").hide();
     $("#reset").hide();
     questionNumber = 0;
+
+    questionImage = addImage();
 
     // for (i = 0; i < questions.length; i++) { 
       function questionAsking() {
@@ -79,6 +91,8 @@ $(document).ready(function() {
                 clearInterval(intervalId);
                 // if ($("#results").html() != "") {
                 $("#results").html("Time's up! The correct answer is: " + answers[questionNumber]);
+                $("#imageField").show();
+                $("#imageField").html(questionImage);
                 // }
                 // questionNumber ++;
                 interimTimer();
@@ -108,6 +122,8 @@ $(document).ready(function() {
                         if ($(this).html() === answers[questionNumber]) {
                             $(this).addClass("correct");
                             $("#results").text("You correctly selected: " + answers[questionNumber]);
+                            $("#imageField").show();
+                            $("#imageField").html(questionImage);
                             correct++;
                             console.log("correct:" + correct);
                             interimTimer();
@@ -118,6 +134,8 @@ $(document).ready(function() {
                         else {
                           $(this).addClass("incorrect");
                           $("#results").html("Wrong! The correct answer is: " + answers[questionNumber]);
+                          $("#imageField").show();
+                          $("#imageField").html(questionImage);
                           incorrect++;
                           console.log("incorrect" + incorrect);
                           interimTimer();
@@ -174,6 +192,13 @@ $(document).ready(function() {
           $("#unanswered-text").html("Number Unanswered: " + unattempted);             
           $("#reset").show();
           $("#reset").html("Restart");
+        };
+
+        function addImage() {
+          var image = $('<img>');
+          image.attr('src', images[questionNumber]);
+          image.attr('width','400px');
+          return image;
         };
 
   });
